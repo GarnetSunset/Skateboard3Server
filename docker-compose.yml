@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  skate3server:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "42100:42100" # gosredirector
+      - "10744:10744" # blaze-app
+      - "9946:9946"   # telemetry
+      - "80:80"       # web
+    volumes:
+      - .:/app
+    restart: unless-stopped
